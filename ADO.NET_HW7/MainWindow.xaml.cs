@@ -185,8 +185,6 @@ namespace ADO.NET_HW7
                 
                 int? year = !string.IsNullOrWhiteSpace(yearTxtBox.Text) 
                     ? int.Parse(yearTxtBox.Text) : (int?)null;
-                int? pages = !string.IsNullOrWhiteSpace(pagesTxtBox.Text) 
-                    ? int.Parse(pagesTxtBox.Text) : (int?)null;
 
                 using (LibraryDBEntities db = new LibraryDBEntities())
                 {
@@ -215,10 +213,6 @@ namespace ADO.NET_HW7
                     if (year.HasValue)
                     {
                         query = query.Where(b => b.Year == year.Value);
-                    }
-                    if (pages.HasValue)
-                    {
-                        query = query.Where(b => b.Pages == pages.Value);
                     }
                     
                     List<Books> searchResults = query.ToList();
